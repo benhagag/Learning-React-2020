@@ -3,15 +3,27 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+
+  // state - object that is managed from inside the Class Component.
+  state = {
+    persons: [
+      { name: 'Ben', age: 28},
+      { name: 'Amit', age: 27},
+      { name: 'Yoni', age: 30}
+    ]
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Hi, I am a React app</h1>
 
+        <button>Switch Name</button>
+
         {/* Adding properties to the Person component */}
-        <Person name="Ben" age="28" />
-        <Person name="Amit" age="27" >My Hobbies: Gaming </Person>
-        <Person name="Yoni" age="30" />
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Gaming </Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
       </div>
     );
 
