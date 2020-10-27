@@ -1,11 +1,13 @@
 import React from 'react';
 
-// adding functional component
+// Adding functional component
 
+const person  = (props) => { // arrow function
+    /*  props - All the properties we use on the HTML JSX element.
+        On Class component we will use props with this -> {this.props.name}
+    */
 
-// arrow function
-const person  = () => {
-    return <p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old!</p>
+    return <p>I'm {props.name} and I am {props.age} years old!</p>
 
 }
 
