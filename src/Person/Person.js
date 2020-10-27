@@ -20,6 +20,14 @@ const person  = (props) => { // arrow function
                 EXAMPLE:  <Person> Some text here.. </Person>
             */}
             <p>{props.children}</p>
+
+            {/*
+                props.change - function from App.js to pass the value of the input onchange for changing the state in App Component.
+                props.name - value the name as it passed from App component.
+                Two way binding - form App to person pass  avalue AND from person to App return a value onChange.
+
+             */}
+            <input type="text" onChange={props.change} value={props.name}></input>
             
         </div>
     );

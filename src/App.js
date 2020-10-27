@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     persons: [
       { name: 'Ben', age: 28},
-      { name: 'Amit', age: 27},
+      { name: 'Amitt', age: 27},
       { name: 'Yoni', age: 30}
     ],
     otherState: 'Some other data'
@@ -29,6 +29,23 @@ class App extends Component {
       persons: [
         { name: newName, age: 28},
         { name: 'Amit', age: 27},
+        { name: 'Yoni', age: 30}
+      ],
+    });
+    console.log(this.state);
+  }
+
+  /*
+    Binding between Components - 
+    Passing the function by references between components as porperty.
+    in the other side use it by props.
+    use the event we get from the eventlistener
+  */
+  nameChangeHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: "Ben Gala", age: 28},
+        { name: event.target.value, age: 27},
         { name: 'Yoni', age: 30}
       ],
     });
@@ -66,6 +83,7 @@ class App extends Component {
             Using bind for passing values to the function 
           */
           click={this.switchNameHandler.bind(this, "Zion")} 
+          change={this.nameChangeHandler} 
         >
           My Hobbies: Gaming 
         </Person>
