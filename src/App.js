@@ -53,6 +53,16 @@ class App extends Component {
   }
 
   render() {
+
+    // In Inline CSS in JSX we omit the - (background-color->backgroundColor) 
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      pading: '8px',
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
         <h1>Hi, I am a React app</h1>
@@ -66,6 +76,7 @@ class App extends Component {
             # Better way to do it with .bind(this, value). #
           */
           onClick={() => this.switchNameHandler("Shimon")}
+          style={style}
         >
           Switch Name
         </button>
