@@ -1,11 +1,12 @@
 import React from 'react';
+import './Person.css'
 
 // Adding functional component
 
 const person  = (props) => { // arrow function
 
     return (
-        <div>
+        <div className="person">
             {/* 
                 props - All the properties we use on the HTML JSX element.
                 On Class component we will use props with this -> {this.props.name}
