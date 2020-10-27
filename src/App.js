@@ -10,7 +10,7 @@ class App extends Component {
 
         {/* Adding properties to the Person component */}
         <Person name="Ben" age="28" />
-        <Person name="Amit" age="27" />
+        <Person name="Amit" age="27" >My Hobbies: Gaming </Person>
         <Person name="Yoni" age="30" />
       </div>
     );
