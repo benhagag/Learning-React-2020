@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Animal from './Animal/Animal';
 
 class App extends Component {
 
@@ -46,6 +47,7 @@ class App extends Component {
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Gaming </Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <Animal />
       </div>
     );
 
