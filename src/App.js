@@ -10,7 +10,28 @@ class App extends Component {
       { name: 'Ben', age: 28},
       { name: 'Amit', age: 27},
       { name: 'Yoni', age: 30}
-    ]
+    ],
+    otherState: 'Some other data'
+  }
+
+  /* 
+    we store function in a variable and then use this method on event listener without -> ().
+    because we don't want to execute the method while rendering the HTML.
+    we want it to be executed only when the event listener is triggered.
+  */
+  switchNameHandler = () => {
+    /*
+     this.setState  - we will use it for overwite data.
+     it will update the object we want to change that already exists in state.
+    */
+    this.setState({
+      persons: [
+        { name: 'Ben Hagag', age: 28},
+        { name: 'Amit', age: 27},
+        { name: 'Yoni', age: 30}
+      ],
+    });
+    console.log(this.state);
   }
 
   render() {
@@ -18,7 +39,8 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I am a React app</h1>
 
-        <button>Switch Name</button>
+ 
+        <button onClick={this.switchNameHandler}>Switch Name</button>
 
         {/* Adding properties to the Person component */}
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
