@@ -20,14 +20,14 @@ class App extends Component {
     because we don't want to execute the method while rendering the HTML.
     we want it to be executed only when the event listener is triggered.
   */
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     /*
      this.setState  - we will use it for overwite data.
      it will update the object we want to change that already exists in state.
     */
     this.setState({
       persons: [
-        { name: 'Ben Hagag', age: 28},
+        { name: newName, age: 28},
         { name: 'Amit', age: 27},
         { name: 'Yoni', age: 30}
       ],
@@ -41,12 +41,38 @@ class App extends Component {
         <h1>Hi, I am a React app</h1>
 
  
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <button
+          /* 
+            Using arrow function for passing values to the function.
+            Important to know - this is any Annonymous function that will be excuted onclick
+            and will return the result of the function that inside the Annonymous function.
+            # Better way to do it with .bind(this, value). #
+          */
+          onClick={() => this.switchNameHandler("Shimon")}
+        >
+          Switch Name
+        </button>
 
         {/* Adding properties to the Person component */}
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Gaming </Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <Person 
+          name={this.state.persons[0].name} 
+          age={this.state.persons[0].age} 
+        />
+        <Person 
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          /* 
+            Passing Method references between components with props
+            Using bind for passing values to the function 
+          */
+          click={this.switchNameHandler.bind(this, "Zion")} 
+        >
+          My Hobbies: Gaming 
+        </Person>
+        <Person 
+          name={this.state.persons[2].name} 
+          age={this.state.persons[2].age} 
+        />
         <Animal />
       </div>
     );
