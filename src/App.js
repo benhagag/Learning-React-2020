@@ -20,10 +20,10 @@ class App extends Component {
 
   /* 
     # assigment numer #1
-    pass userNameHandler to UserInput
+    pass userNameChangeHandler to UserInput
     and get back the value from the input onChange
   */
-  userNameHandler = (event) =>{
+  userNameChangeHandler = (event) =>{
     this.setState({
       userName:event.target.value
     })
@@ -133,7 +133,7 @@ class App extends Component {
             <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
           </ol>
           <h2>UserInput Component</h2>
-          <UserInput value={this.state.userName} change={this.userNameHandler} />
+          <UserInput value={this.state.userName} change={this.userNameChangeHandler} />
           <h2>UserOutput Component</h2>
           <UserOutput userName={this.state.userName}/>
         </div>
