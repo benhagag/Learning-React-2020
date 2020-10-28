@@ -9,9 +9,6 @@ const userInput = (props) => {
         color: "red",
         borderColor: "orange"
     }
-    const styleDiv = {
-
-    };
 
     return(
         <div>
