@@ -15,4 +15,3 @@ const userOutput = (props) => {
 }
 
 export default userOutput;
-//test
