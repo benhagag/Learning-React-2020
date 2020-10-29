@@ -4,6 +4,7 @@ import Person from './Person/Person';
 import Animal from './Animal/Animal';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
+import person from './Person/Person';
 
 class App extends Component {
 
@@ -85,6 +86,35 @@ class App extends Component {
       cursor: 'pointer'
     }
 
+    let persons = null;
+    if (this.state.showPersons){
+      persons = (
+        <div>
+          {/* Adding properties to the Person component */}
+          <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age} 
+          />
+          <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}
+            /* 
+              Passing Method references between components with props
+              Using bind for passing values to the function 
+            */
+            click={this.switchNameHandler.bind(this, "Zion")} 
+            change={this.nameChangeHandler} 
+          >
+            My Hobbies: Gaming 
+          </Person>
+          <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age} 
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hi, I am a React app</h1>
@@ -102,35 +132,7 @@ class App extends Component {
         >
           Toggle Persons
         </button>
-
-        { this.state.showPersons
-          ?
-            <div>
-              {/* Adding properties to the Person component */}
-              <Person 
-                name={this.state.persons[0].name} 
-                age={this.state.persons[0].age} 
-              />
-              <Person 
-                name={this.state.persons[1].name} 
-                age={this.state.persons[1].age}
-                /* 
-                  Passing Method references between components with props
-                  Using bind for passing values to the function 
-                */
-                click={this.switchNameHandler.bind(this, "Zion")} 
-                change={this.nameChangeHandler} 
-              >
-                My Hobbies: Gaming 
-              </Person>
-              <Person 
-                name={this.state.persons[2].name} 
-                age={this.state.persons[2].age} 
-              />
-            </div>
-          :
-            null
-        }
+        {persons}
         <Animal />
         <hr></hr>
         <div id="assigment-1">
