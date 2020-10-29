@@ -14,6 +14,7 @@ class App extends Component {
       { name: 'Amitt', age: 27},
       { name: 'Yoni', age: 30}
     ],
+    showPersons: false,
     otherState: 'Some other data',
     userName: 'BenHagag'
   }
@@ -66,6 +67,13 @@ class App extends Component {
     console.log(this.state);
   }
 
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow
+    });
+  }
+
   render() {
 
     // In Inline CSS in JSX we omit the - (background-color->backgroundColor) 
@@ -89,33 +97,40 @@ class App extends Component {
             and will return the result of the function that inside the Annonymous function.
             # Better way to do it with .bind(this, value). #
           */
-          onClick={() => this.switchNameHandler("Shimon")}
+          onClick={this.togglePersonsHandler}
           style={style}
         >
-          Switch Name
+          Toggle Persons
         </button>
 
-        {/* Adding properties to the Person component */}
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age} 
-        />
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          /* 
-            Passing Method references between components with props
-            Using bind for passing values to the function 
-          */
-          click={this.switchNameHandler.bind(this, "Zion")} 
-          change={this.nameChangeHandler} 
-        >
-          My Hobbies: Gaming 
-        </Person>
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age} 
-        />
+        { this.state.showPersons
+          ?
+            <div>
+              {/* Adding properties to the Person component */}
+              <Person 
+                name={this.state.persons[0].name} 
+                age={this.state.persons[0].age} 
+              />
+              <Person 
+                name={this.state.persons[1].name} 
+                age={this.state.persons[1].age}
+                /* 
+                  Passing Method references between components with props
+                  Using bind for passing values to the function 
+                */
+                click={this.switchNameHandler.bind(this, "Zion")} 
+                change={this.nameChangeHandler} 
+              >
+                My Hobbies: Gaming 
+              </Person>
+              <Person 
+                name={this.state.persons[2].name} 
+                age={this.state.persons[2].age} 
+              />
+            </div>
+          :
+            null
+        }
         <Animal />
         <hr></hr>
         <div id="assigment-1">
