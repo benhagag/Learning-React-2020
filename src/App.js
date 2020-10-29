@@ -87,30 +87,22 @@ class App extends Component {
     }
 
     let persons = null;
+
     if (this.state.showPersons){
       persons = (
         <div>
-          {/* Adding properties to the Person component */}
-          <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age} 
-          />
-          <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            /* 
-              Passing Method references between components with props
-              Using bind for passing values to the function 
-            */
-            click={this.switchNameHandler.bind(this, "Zion")} 
-            change={this.nameChangeHandler} 
-          >
-            My Hobbies: Gaming 
-          </Person>
-          <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age} 
-          />
+          {/*.map() - will excute a method for each element in the array*/}
+          {this.state.persons.map(person =>{
+            return <Person
+                     // Adding properties to the Person component
+                     name={person.name}
+                     age={person.age}
+                    />
+          })}
+
+              {/* Passing Method references between components with props
+              Using bind() for passing values to the function  */}
+              
         </div>
       );
     }
@@ -118,15 +110,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I am a React app</h1>
-
- 
         <button
-          /* 
-            Using arrow function for passing values to the function.
-            Important to know - this is any Annonymous function that will be excuted onclick
-            and will return the result of the function that inside the Annonymous function.
-            # Better way to do it with .bind(this, value). #
-          */
           onClick={this.togglePersonsHandler}
           style={style}
         >
