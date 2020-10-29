@@ -4,16 +4,15 @@ import Person from './Person/Person';
 import Animal from './Animal/Animal';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
-import person from './Person/Person';
 
 class App extends Component {
 
   // state - object that is managed from inside the Class Component.
   state = {
     persons: [
-      { name: 'Ben', age: 28},
-      { name: 'Amitt', age: 27},
-      { name: 'Yoni', age: 30}
+      { id:1, name: 'Ben', age: 28},
+      { id:2, name: 'Amitt', age: 27},
+      { id:3, name: 'Yoni', age: 30}
     ],
     showPersons: false,
     otherState: 'Some other data',
@@ -59,7 +58,8 @@ class App extends Component {
     */
     
     // -> slice create a new object array
-    const persons = this.state.persons.slice(); 
+    // const persons = this.state.persons.slice(); 
+
     // -> create new array with spreading the persons array inside - ES6 fteature.
     const persons = [...this.state.persons];
 
@@ -120,6 +120,13 @@ class App extends Component {
                      // Adding properties to the Person component
                      name={person.name}
                      age={person.age}
+                     /*
+                        key- to put something unique.
+                        Keys help React identify which items have changed, are added, or are removed.
+                        Keys should be given to the elements inside the array to give the elements a stable identity.
+                      
+                     */
+                     key={person.id}
                      /* 
                       Using arrow function for passing values to the function.
                       Important to know - this is any Annonymous function that will be excuted onclick
