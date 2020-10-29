@@ -51,6 +51,20 @@ class App extends Component {
     console.log(this.state);
   }
 
+  deletePersonHandler = (personIndex) =>{
+    const persons = this.state.persons;
+
+    // remove the elemnt in the place of index
+    persons.splice(personIndex, 1);
+
+    this.setState({
+      persons:persons
+    });
+
+    
+
+  }
+
   /*
     Binding between Components - 
     Passing the function by references between components as porperty.
@@ -92,17 +106,24 @@ class App extends Component {
       persons = (
         <div>
           {/*.map() - will excute a method for each element in the array*/}
-          {this.state.persons.map(person =>{
+          {this.state.persons.map((person, index) => {
             return <Person
                      // Adding properties to the Person component
                      name={person.name}
                      age={person.age}
+                     /* 
+                      Using arrow function for passing values to the function.
+                      Important to know - this is any Annonymous function that will be excuted onclick
+                      and will return the result of the function that inside the Annonymous function.
+                      # Better way to do it with .bind(this, value). #
+                    */
+                     click={() => this.deletePersonHandler(index)}
                     />
           })}
 
               {/* Passing Method references between components with props
               Using bind() for passing values to the function  */}
-              
+
         </div>
       );
     }
