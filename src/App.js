@@ -52,7 +52,16 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) =>{
-    const persons = this.state.persons;
+
+    /*
+      create a copy of the state , changed that and then update the state.
+      beacuase we want to update the state without mutating the original state first.
+    */
+    
+    // -> slice create a new object array
+    const persons = this.state.persons.slice(); 
+    // -> create new array with spreading the persons array inside - ES6 fteature.
+    const persons = [...this.state.persons];
 
     // remove the elemnt in the place of index
     persons.splice(personIndex, 1);
