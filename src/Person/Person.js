@@ -28,7 +28,7 @@ const person  = (props) => { // arrow function
                 Two way binding - form App to person pass  avalue AND from person to App return a value onChange.
 
              */}
-            <input type="text" onChange={props.change} value={props.name}></input>
+            <input type="text" onChange={props.changed} value={props.name}></input>
             
         </div>
     );

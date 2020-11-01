@@ -80,14 +80,31 @@ class App extends Component {
     in the other side use it by props.
     use the event we get from the eventlistener
   */
-  nameChangeHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: "Ben Gala", age: 28},
-        { name: event.target.value, age: 27},
-        { name: 'Yoni', age: 30}
-      ],
+  nameChangeHandler = (event, id) => {
+
+    /*
+      The findIndex() method returns the index of the first element in the array that satisfies the provided testing function.
+      Otherwise, it returns -1, indicating that no element passed the test.
+    */
+    const personIndex = this.state.persons.findIndex(person => {
+      return person.id === id;
     });
+    
+    // creating a new object by spreading the the object from persons[personIndex] 
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    // because we got a copy in person we dont maniplate the orignal state.
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({
+      persons: persons
+    });
+    
     console.log(this.state);
   }
 
@@ -121,9 +138,9 @@ class App extends Component {
                      name={person.name}
                      age={person.age}
                      /*
-                        key- to put something unique.
-                        Keys help React identify which items have changed, are added, or are removed.
-                        Keys should be given to the elements inside the array to give the elements a stable identity.
+                      key- to put something unique.
+                      Keys help React identify which items have changed, are added, or are removed.
+                      Keys should be given to the elements inside the array to give the elements a stable identity.
                       
                      */
                      key={person.id}
@@ -134,11 +151,21 @@ class App extends Component {
                       # Better way to do it with .bind(this, value). #
                     */
                      click={() => this.deletePersonHandler(index)}
+                     /*
+                      Annonymous function - that is excuted while the eventListener is trrigerd.
+                      Get the event while triggerd and than send the event to the nameChangedHandler
+
+                     */
+                     changed={(event) => this.nameChangeHandler(event,person.id)}
                     />
           })}
 
-              {/* Passing Method references between components with props
-              Using bind() for passing values to the function  */}
+              {/*
+                Passing Method references between components with props
+                Using bind() for passing values to the function
+                EXAMPLE: 
+                <Person click={this.deletePersonHandler.bind(this,index)} />
+              */}
 
         </div>
       );
