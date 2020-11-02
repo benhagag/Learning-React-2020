@@ -145,7 +145,8 @@ class App extends Component {
 
     // In Inline CSS in JSX we omit the - (background-color->backgroundColor) 
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       pading: '8px',
@@ -195,6 +196,7 @@ class App extends Component {
 
         </div>
       );
+      style.backgroundColor = 'red';
     }
 
     
@@ -218,6 +220,8 @@ class App extends Component {
           Toggle Persons
         </button>
         {persons}
+        <br />
+        <br />
         <Animal />
         <hr />
         <div id="assigment-1">
