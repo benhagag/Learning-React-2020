@@ -217,7 +217,7 @@ class App extends Component {
         </button>
         {persons}
         <Animal />
-        <hr></hr>
+        <hr />
         <div id="assigment-1">
           <h1>Assigment # 1</h1>
           <ol>
@@ -237,7 +237,7 @@ class App extends Component {
           <h2>UserOutput Component</h2>
           <UserOutput userName={this.state.userName}/>
         </div>
-        <hr></hr>
+        <hr />
         <div id="assigment-2">
           <h1>Assigment # 2</h1>
           <p>Hint: Keep in mind that JavaScript strings are basically arrays!</p>
@@ -249,8 +249,7 @@ class App extends Component {
             <li>Render a list of CharComponents where each CharComponent receives a different letter of the entered text (in the initial input field) as a prop.</li>
             <li>When you click a CharComponent, it should be removed from the entered text.</li>
           </ol>
-          <br></br>
-          <br></br>
+          <br />
           <input type="text" value={this.state.inputValue} onChange={(event) => this.inputLengthHandler(event)}/>
           <p>The length of the of the value in the input above is : {this.state.inputLength}</p>
           <h2>ValidationComponent Component</h2>
