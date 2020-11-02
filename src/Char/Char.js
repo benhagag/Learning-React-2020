@@ -2,7 +2,7 @@ import React from 'react';
 
 // Create another component (=> CharComponent) and style it as an inline box (=> display: inline-block, padding: 16px, text-align: center, margin: 16px, border: 1px solid black).
 
-const charComponent = props =>{
+const char = props =>{
 
     const style = {
         display: "inline-block",
@@ -20,4 +20,4 @@ const charComponent = props =>{
 
 }
 
-export default charComponent;
+export default char;

@@ -4,9 +4,8 @@ import Person from './Person/Person';
 import Animal from './Animal/Animal';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
-import ValidationComponent from './ValidationComponent/ValidationComponent';
-import  CharComponent from './CharComponent/CharComponent'
-import charComponent from './CharComponent/CharComponent';
+import Validation from './Validation/Validation';
+import Char from './Char/Char';
 
 class App extends Component {
 
@@ -20,7 +19,6 @@ class App extends Component {
     showPersons: false,
     otherState: 'Some other data',
     userName: 'BenHagag',
-    inputLength: 0,
     inputValue: ''
   }
 
@@ -127,11 +125,20 @@ class App extends Component {
     })
   }
 
-  clearInputValue = () =>{
+  clearInputValue = index =>{
+    // split('') - convert string into an array
+    let value = this.state.inputValue.split('');
+
+    // splice() - remove slice from an array
+    value.splice(index, 1);
+
+    // join('') - array of characters into string
+    value = value.join('');
+
     this.setState({
-      inputLength:0,
-      inputValue:''
+      inputValue:value
     })
+
   }
 
   render() {
@@ -190,20 +197,15 @@ class App extends Component {
       );
     }
 
-    // split('') -> will convert string into array
-    let letters = this.state.inputValue.split('');
-    if(Array.isArray(letters)){
-      let value = letters.join('');
-      letters = (
+    
+      let letters = (
         <div>
-           <h2>CharComponent componenet</h2>
-          <p>The value is: {value}</p>
-          {letters.map((letter, index) => {
-            return <CharComponent letter = {letter} key={index} click={this.clearInputValue} />
+          {/* split('') -> will convert string into array */}
+          {this.state.inputValue.split('').map((letter, index) => {
+            return <Char letter = {letter} key={index} click={()=> this.clearInputValue(index)} />
           })}
         </div>
-      )
-    }
+      );
       
 
     return (
@@ -251,9 +253,11 @@ class App extends Component {
           </ol>
           <br />
           <input type="text" value={this.state.inputValue} onChange={(event) => this.inputLengthHandler(event)}/>
-          <p>The length of the of the value in the input above is : {this.state.inputLength}</p>
+          <p>{this.state.inputValue}</p>
+          <p>The length of the of the value in the input above is : {this.state.inputValue.length}</p>
           <h2>ValidationComponent Component</h2>
-          <ValidationComponent inputLength={this.state.inputLength}/>
+          <Validation inputLength={this.state.inputValue.length}/>
+          <h2>Char componenet</h2>
           {letters}
         </div>
       </div>
