@@ -1,12 +1,18 @@
 import React from 'react';
+import Radium from 'radium';
 import './Person.css'
 
 // Adding functional component
 
 const person  = (props) => { // arrow function
 
+    const style = {
+        '@media(min-width: 500px)':{
+            width: '450px'
+        }
+    };
     return (
-        <div className="person">
+        <div className="person" style={style}>
             {/* 
                 props - All the properties we use on the HTML JSX element.
                 On Class component we will use props with this -> {this.props.name}
@@ -35,4 +41,4 @@ const person  = (props) => { // arrow function
 
 }
 
-export default person;
+export default Radium(person);
