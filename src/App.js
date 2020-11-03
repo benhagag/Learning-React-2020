@@ -9,8 +9,12 @@ import UserOutput from './UserOutput/UserOutput';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
 
+/*
+  Using ternary expression JS for dynamic style.
+  Styled Component unique for combinig CSS ans JS.
+*/
 const StyleButton = styled.button`
-      background-color: green;
+      background-color: ${props => props.alt ? 'red' : 'green'};
       color: white;
       font: inherit;
       border: 1px solid blue;
@@ -18,7 +22,7 @@ const StyleButton = styled.button`
       cursor: pointer;
 
       &:hover {
-        background-color: lightgreen;
+        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
         color: black;
       }
 
@@ -218,12 +222,14 @@ class App extends Component {
 
         </div>
       );
-      style.backgroundColor = 'red';
-       // using Radium
-       style[':hover'] =  {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
+
+
+      // style.backgroundColor = 'red';
+      //  // using Radium
+      //  style[':hover'] =  {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // };
     }
 
     
@@ -252,6 +258,7 @@ class App extends Component {
           <h1>Hi, I am a React app</h1>
           <p className={classes.join(' ')}>React app is really working</p>
           <StyleButton
+          alt={this.state.showPersons}
             onClick={this.togglePersonsHandler}
           >
             Toggle Persons
