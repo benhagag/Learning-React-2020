@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import './App.css';
 // import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
@@ -9,24 +9,6 @@ import UserOutput from './UserOutput/UserOutput';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
 
-/*
-  Using ternary expression JS for dynamic style.
-  Styled Component unique for combinig CSS ans JS.
-*/
-const StyleButton = styled.button`
-      background-color: ${props => props.alt ? 'red' : 'green'};
-      color: white;
-      font: inherit;
-      border: 1px solid blue;
-      pading: 8px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-        color: black;
-      }
-
-`;
 
 class App extends Component {
 
@@ -257,13 +239,13 @@ class App extends Component {
         <div className="App">
           <h1>Hi, I am a React app</h1>
           <p className={classes.join(' ')}>React app is really working</p>
-          <StyleButton
+          <button
           // React throw a Warning for writing FALSE in the DOM so instead I'm using undefined.
-          alt={this.state.showPersons ? true : undefined}
+          className="button"
             onClick={this.togglePersonsHandler}
           >
             Toggle Persons
-          </StyleButton>
+          </button>
           {persons}
           <br />
           <br />
