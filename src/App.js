@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import './App.css';
 // import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
@@ -7,6 +8,21 @@ import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
+
+const StyleButton = styled.button`
+      background-color: green;
+      color: white;
+      font: inherit;
+      border: 1px solid blue;
+      pading: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lightgreen;
+        color: black;
+      }
+
+`;
 
 class App extends Component {
 
@@ -235,12 +251,11 @@ class App extends Component {
         <div className="App">
           <h1>Hi, I am a React app</h1>
           <p className={classes.join(' ')}>React app is really working</p>
-          <button
+          <StyleButton
             onClick={this.togglePersonsHandler}
-            style={style}
           >
             Toggle Persons
-          </button>
+          </StyleButton>
           {persons}
           <br />
           <br />
