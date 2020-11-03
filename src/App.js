@@ -258,7 +258,8 @@ class App extends Component {
           <h1>Hi, I am a React app</h1>
           <p className={classes.join(' ')}>React app is really working</p>
           <StyleButton
-          alt={this.state.showPersons}
+          // React throw a Warning for writing FALSE in the DOM so instead I'm using undefined.
+          alt={this.state.showPersons ? true : undefined}
             onClick={this.togglePersonsHandler}
           >
             Toggle Persons
