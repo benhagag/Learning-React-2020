@@ -1,9 +1,23 @@
 import React from 'react';
-import Radium from 'radium';
-import './Person.css'
+import styled from 'styled-components';
+// import './Person.css'
 
+
+// Style Component(StyleDiv) - we will use it as component - because it returns a React Component
+//styled. will return every element in HTML that we cann aplly CSS on it
+const StyleDiv = styled.div`
+    // width :60%;
+    // margin: 16px auto;
+    // border: 1px solid #eee;
+    // box-shadow: 0 2px 3px #ccc;
+    // padding: 16px;
+    // text-align: center;
+
+    // @media (min-width: 500px){
+    //     width: 450px;
+    // }
+`;
 // Adding functional component
-
 const person  = (props) => { // arrow function
 
     const style = {
@@ -11,8 +25,10 @@ const person  = (props) => { // arrow function
             width: '450px'
         }
     };
+
     return (
-        <div className="person" style={style}>
+        // <div className="person" style={style}>
+        <StyleDiv>
             {/* 
                 props - All the properties we use on the HTML JSX element.
                 On Class component we will use props with this -> {this.props.name}
@@ -35,10 +51,10 @@ const person  = (props) => { // arrow function
 
              */}
             <input type="text" onChange={props.changed} value={props.name}></input>
-            
-        </div>
+        </StyleDiv>    
+        // </div>
     );
 
 }
 
-export default Radium(person);
+export default person;

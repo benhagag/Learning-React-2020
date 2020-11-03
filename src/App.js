@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
+// import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 import Animal from './Animal/Animal';
 import UserInput from './UserInput/UserInput';
@@ -231,7 +231,7 @@ class App extends Component {
 
     return (
       // StyleRoot - For apply Radium in all conponents that is renderd in App.js
-      <StyleRoot>
+      // <StyleRoot>
         <div className="App">
           <h1>Hi, I am a React app</h1>
           <p className={classes.join(' ')}>React app is really working</p>
@@ -287,7 +287,7 @@ class App extends Component {
             {letters}
           </div>
         </div>
-      </StyleRoot>
+      // </StyleRoot>
     );
 
 
@@ -320,4 +320,5 @@ class App extends Component {
   }
 }
 
-export default Radium(App);
+// export default Radium(App);
+export default App;
