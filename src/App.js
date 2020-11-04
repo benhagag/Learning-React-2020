@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 // import styled from 'styled-components';
-import classes from './App.css'; // it will import al classes in css as peroperty in classes object -> classes.button
+/*
+  * CSS modules  - it will import all classes in CSS as peroperty in classes object -> classes.button
+  * AND will write them in DOM by generated them to class name which allow us to use the CSS it self without using CSS modules, just regular CSS
+*/
+import classes from './App.css';
 // import'./App.css';
 // import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
