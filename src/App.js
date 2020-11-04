@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import styled from 'styled-components';
-import './App.css';
+import classes from './App.css'; // it will import al classes in css as peroperty in classes object -> classes.button
+// import'./App.css';
 // import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 import Animal from './Animal/Animal';
@@ -147,21 +148,9 @@ class App extends Component {
   render() {
 
     // In Inline CSS in JSX we omit the - (background-color->backgroundColor) 
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      pading: '8px',
-      cursor: 'pointer',
-      // using Radium
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
 
     let persons = null;
+    let buttonClass = '';
 
     if (this.state.showPersons){
       persons = (
@@ -205,13 +194,8 @@ class App extends Component {
         </div>
       );
 
-
-      // style.backgroundColor = 'red';
-      //  // using Radium
-      //  style[':hover'] =  {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // };
+     buttonClass = classes.Red;
+     console.log(classes);
     }
 
     
@@ -225,23 +209,23 @@ class App extends Component {
       );
     
     
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <= 2){
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if(this.state.persons.length <= 1){
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
       // StyleRoot - For apply Radium in all conponents that is renderd in App.js
       // <StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I am a React app</h1>
-          <p className={classes.join(' ')}>React app is really working</p>
+          <p className={assignedClasses.join(' ')}>React app is really working</p>
           <button
-          // React throw a Warning for writing FALSE in the DOM so instead I'm using undefined.
-          className="button"
+            // React throw a Warning for writing FALSE in the DOM so instead I'm using undefined.
+            className={buttonClass}
             onClick={this.togglePersonsHandler}
           >
             Toggle Persons

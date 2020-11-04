@@ -4,7 +4,7 @@ const validation = props => {
 
     let errorValidtion = null;
 
-    if(props.inputLength != 0){
+    if(props.inputLength !== 0){
 
         if(props.inputLength > 15){
             errorValidtion = 'The input text is too long, must be 15 characters or less';

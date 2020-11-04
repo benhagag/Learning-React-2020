@@ -14,7 +14,7 @@ const animal  = props => { // arrow function
         ],
     });
 
-    const [otherStateText, setOtherState]  = useState({otherStateText : 'Some text from other text'});
+    const [otherStateText]  = useState({otherStateText : 'Some text from other text'});
 
     console.log(animalsState, otherStateText);
 
