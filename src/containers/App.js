@@ -7,12 +7,12 @@ import React, { Component } from 'react';
 import classes from './App.css';
 // import'./App.css';
 // import Radium, {StyleRoot} from 'radium';
-import Person from './Person/Person';
-import Animal from './Animal/Animal';
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
-import Validation from './Validation/Validation';
-import Char from './Char/Char';
+import Person from '../components/Persons/Person/Person';
+import Animal from '../components/Animal/Animal';
+import UserInput from '../components/UserInput/UserInput';
+import UserOutput from '../components/UserOutput/UserOutput';
+import Validation from '../components/Validation/Validation';
+import Char from '../components/Char/Char';
 
 
 class App extends Component {
