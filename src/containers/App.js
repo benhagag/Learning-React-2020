@@ -8,8 +8,11 @@ import classes from './App.css';
 // import'./App.css';
 // import Radium, {StyleRoot} from 'radium';
 
-import Person from '../components/Persons/Person/Person';
+import Cockpit from '../components/Cockpit/Cockpit';
+import Persons from '../components/Persons/Persons';
 import Animal from '../components/Animal/Animal';
+
+
 import Assigment1 from '../components/Assigment1/Assigment1';
 import Assigment2 from '../components/Assigment2/Assigment2';
 
@@ -109,73 +112,25 @@ class App extends Component {
     // In Inline CSS in JSX we omit the - (background-color->backgroundColor) 
 
     let persons = null;
-    let buttonClass = '';
 
     if (this.state.showPersons){
-      persons = (
-        <div>
-          {/*.map() - will excute a method for each element in the array*/}
-          {this.state.persons.map((person, index) => {
-            return <Person
-                     // Adding properties to the Person component
-                     name={person.name}
-                     age={person.age}
-                     /*
-                      key- to put something unique.
-                      Keys help React identify which items have changed, are added, or are removed.
-                      Keys should be given to the elements inside the array to give the elements a stable identity.
-                      
-                     */
-                     key={person.id}
-                     /* 
-                      Using arrow function for passing values to the function.
-                      Important to know - this is any Annonymous function that will be excuted onclick
-                      and will return the result of the function that inside the Annonymous function.
-                      # Better way to do it with .bind(this, value). #
-                    */
-                     click={() => this.deletePersonHandler(index)}
-                     /*
-                      Annonymous function - that is excuted while the eventListener is trrigerd.
-                      Get the event while triggerd and than send the event to the nameChangedHandler
-
-                     */
-                     changed={(event) => this.nameChangeHandler(event,person.id)}
-                    />
-          })}
-
-              {/*
-                Passing Method references between components with props
-                Using bind() for passing values to the function
-                EXAMPLE: 
-                <Person click={this.deletePersonHandler.bind(this,index)} />
-              */}
-
-        </div>
-      );
-     buttonClass = classes.Red;
-    }
-    
-    const assignedClasses = [];
-    if(this.state.persons.length <= 2){
-      assignedClasses.push(classes.red);
-    }
-    if(this.state.persons.length <= 1){
-      assignedClasses.push(classes.bold);
+      persons = 
+          <Persons
+            persons={this.state.persons} 
+            clicked={this.deletePersonHandler} 
+            changed={this.nameChangeHandler}
+          />
     }
 
     return (
       // StyleRoot - For apply Radium in all conponents that is renderd in App.js
       // <StyleRoot>
         <div className={classes.App}>
-          <h1>Hi, I am a React app</h1>
-          <p className={assignedClasses.join(' ')}>React app is really working</p>
-          <button
-            // React throw a Warning for writing FALSE in the DOM so instead I'm using undefined.
-            className={buttonClass}
-            onClick={this.togglePersonsHandler}
-          >
-            Toggle Persons
-          </button>
+          <Cockpit
+            showPersons={this.state.showPersons}
+            persons={this.state.persons}
+            clicked={this.togglePersonsHandler}
+          />
           {persons}
           <br />
           <br />
@@ -187,8 +142,6 @@ class App extends Component {
         </div>
       // </StyleRoot>
     );
-
-
 
 
     // ---- Behind the scene code of the JSX ----- 
