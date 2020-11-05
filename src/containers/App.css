@@ -2,18 +2,6 @@
   text-align: center;
 }
 
-#assigment-1 ol{
-  display:inline-block;
-  font-family: cursive;
-  box-shadow: 5px 6px 4px 10px red;
-}
-
-#assigment-2 ol{
-  display:inline-block;
-  font-family: cursive;
-  box-shadow: 5px 6px 4px 10px red;
-}
-
 .red{
   color: red;
 }
