@@ -46,6 +46,8 @@ class App extends Component {
   /*
     getDerivedStateFromProps is invoked right before calling the render method, both on the initial mount and on subsequent updates.
     It should return an object to update the state, or null to update nothing.
+    DO: Sync State to Props (just update state by the props we get)
+    Don't: Cause Side-Effects(Like call a HTTP reauest to server)
   */
   static getDerivedStateFromProps(props,state){
     console.log('[App.js] getDerivedStateFromProps', props);
@@ -67,10 +69,37 @@ class App extends Component {
 
     Avoid introducing any side-effects or subscriptions in this method. 
     For those use cases, use componentDidMount() instead.
-    
+
   */
   // UNSAFE_componentWillMount (){
   //   console.log('[App.js] componentWillMount');
+  // }
+
+  /*
+  * shouldComponentUpdate()  - allow us to cancel the updating process
+  * decide whethe or not React should continue evaluating and re-rendering the component
+  * Don't cause side-Effects!
+  */
+  // shouldComponentUpdate(nextProps, nextState){
+
+  // }
+
+  /*
+  * getSnapshotBeforeUpdate() - Changing the DOM in the last minute
+  * DO: Last-minute DOM ops
+  * Don't: Cause side-effects 
+  */
+  // getSnapshotBeforeUpdate(prevProps, prevState){
+
+  // }
+
+  /*
+  * componentDidUpdate() - after the render method has benn excuted
+  * DO: Cause side-effects
+  * DON't: Udate State (Because it triggers re-render)
+  */
+  // componentDidUpdate(){
+
   // }
 
   /* 
