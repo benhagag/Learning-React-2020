@@ -22,6 +22,7 @@ import classes from './Person.css'
 // Adding functional component
 const person  = (props) => { // arrow function
 
+    console.log('[Person.js] rendering...');
     return (
         // <div className="person" style={style}>
         <div className={classes.Person}>
@@ -51,6 +52,6 @@ const person  = (props) => { // arrow function
         // </div>
     );
 
-}
+};
 
 export default person;

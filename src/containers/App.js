@@ -19,6 +19,19 @@ import Assigment2 from '../components/Assigment2/Assigment2';
 
 class App extends Component {
 
+  /*
+    If you don’t initialize state and you don’t bind methods, you don’t need to implement a constructor for your React component.
+    The constructor for a React component is called before it is mounted.
+    When implementing the constructor for a React.
+    Component subclass, you should call super(props) before any other statement
+    Otherwise, this.props will be undefined in the constructor, which can lead to bugs.
+  */
+  constructor(props){
+    // super(props) in the constructor - for getting the props of component that we are extending
+    super(props);
+    console.log('[App.js] constructor');
+  }
+
   // state - object that is managed from inside the Class Component.
   state = {
     persons: [
@@ -29,6 +42,36 @@ class App extends Component {
     showPersons: false,
     otherState: 'Some other data',
   }
+
+  /*
+    getDerivedStateFromProps is invoked right before calling the render method, both on the initial mount and on subsequent updates.
+    It should return an object to update the state, or null to update nothing.
+  */
+  static getDerivedStateFromProps(props,state){
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  /*
+    The componentDidMount() method runs after the component output has been rendered to the DOM.
+    This is a good place to set up a timer
+  */
+  componentDidMount(){
+    console.log('[App.js] componentDidMount');
+  }
+
+  /*
+    UNSAFE_componentWillMount() is invoked just before mounting occurs.
+    It is called before render(), therefore calling setState() synchronously in this method will not trigger an extra rendering.
+    Generally, we recommend using the constructor() instead for initializing state.
+
+    Avoid introducing any side-effects or subscriptions in this method. 
+    For those use cases, use componentDidMount() instead.
+    
+  */
+  // UNSAFE_componentWillMount (){
+  //   console.log('[App.js] componentWillMount');
+  // }
 
   /* 
     we store function in a variable and then use this method on event listener without -> ().
@@ -109,17 +152,19 @@ class App extends Component {
 
   render() {
 
+    console.log('[App.js] render');
+
     // In Inline CSS in JSX we omit the - (background-color->backgroundColor) 
 
     let persons = null;
-
     if (this.state.showPersons){
-      persons = 
+      persons = (
           <Persons
             persons={this.state.persons} 
             clicked={this.deletePersonHandler} 
             changed={this.nameChangeHandler}
           />
+      );
     }
 
     return (

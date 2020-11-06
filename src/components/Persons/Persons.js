@@ -3,9 +3,11 @@ import React from 'react';
 import Person from './Person/Person';
 
 {/*.map() - will excute a method for each element in the array*/}
-const persons = props => props.persons.map((person, index) => {
-
-    return <Person
+const persons = props => {
+    console.log('[Persons.js] rendering...');
+    return props.persons.map((person, index) => {
+        return (
+            <Person
                 // Adding properties to the Person component
                 name={person.name}
                 age={person.age}
@@ -30,7 +32,9 @@ const persons = props => props.persons.map((person, index) => {
                 */
                 changed={(event) => props.changed(event,person.id)}
             />
-});
+        );
+    });
+};
 
 
 export default persons;
