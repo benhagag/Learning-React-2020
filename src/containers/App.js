@@ -45,7 +45,8 @@ class App extends Component {
     showPersons: false,
     otherState: 'Some other data',
     showCokpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
 
   /*
@@ -199,6 +200,14 @@ class App extends Component {
     });
   }
 
+  loginHandler = () => {
+    this.setState((prevState, props)=>{
+      return {
+        authenticated: !prevState.authenticated
+      }
+    });
+  }
+
   render() {
 
     console.log('[App.js] render');
@@ -212,6 +221,7 @@ class App extends Component {
             persons={this.state.persons} 
             clicked={this.deletePersonHandler} 
             changed={this.nameChangeHandler}
+            isAuthenticated={this.state.authenticated}
           />
       );
     }
@@ -229,10 +239,11 @@ class App extends Component {
           </button>
           {this.state.showCokpit ? 
             <Cockpit
-            title={this.props.appTitle}
-            showPersons={this.state.showPersons}
-            personsLength={this.state.persons.length}
-            clicked={this.togglePersonsHandler}
+              title={this.props.appTitle}
+              showPersons={this.state.showPersons}
+              personsLength={this.state.persons.length}
+              clicked={this.togglePersonsHandler}
+              login={this.loginHandler}
             />
             :
             null

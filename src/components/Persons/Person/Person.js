@@ -47,6 +47,13 @@ class Person extends Component {
 
             //Fragment does the sime as the const aux we created wraping all and allow us to return multiple elements
             <Auxiliary>
+                {
+                this.props.isAuth
+                ?
+                <p> Authenticated!</p>
+                : 
+                <p>Please log in</p>
+                }
             {/* // <div className="person" style={style}> */}
             {/* <div className={classes.Person}> */}
                 {/* 
