@@ -44,9 +44,12 @@ class Persons extends Component {
 
         /*
          * Optimize for preventing rendering Persons component when there is no need for that
-         * So now it Person component will be rendered only if Persons is changed.
+         * So now it Person component will be rendered only if Persons is changed
+         * 
+         * Array and Objects are reference types
+         * We compare here the potiner between (nextProps.persons !== this.props.persons)
+         * 
          */
-
         if(nextProps.persons !== this.props.persons){
             return true;
         }else{

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 
 import classes from './Cockpit.css';
 
-const cockpit = (props) => {
+const cockpit = props => {
 
     /*
       * useEffect() - Passing a function to useEffect() and this wil excute for every render cycle
@@ -56,10 +56,10 @@ const cockpit = (props) => {
         btnClass = classes.Red;    
     }
     
-    if(props.persons.length <= 2){
+    if(props.personsLength <= 2){
       assignedClasses.push(classes.red);
     }
-    if(props.persons.length <= 1){
+    if(props.personsLength <= 1){
       assignedClasses.push(classes.bold);
     }
 
@@ -79,4 +79,8 @@ const cockpit = (props) => {
 
 }
 
-export default cockpit;
+/*
+ * React.memo() - store a snapshot of this component and only if its input changes, it will re-render it
+ * And otherwise if its inputs do not change and some parent component want to update this component, React will give back that stored component
+*/
+export default React.memo(cockpit);
