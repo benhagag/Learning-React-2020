@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+    /*
+      * useEffect() - Passing a function to useEffect() and this wil excute for every render cycle
+      * It is componentDidMount and componentDidUpdate combined in one effect
+    */
+    useEffect(()=>{
+        console.log('[Cockpit.js] useEffect');
+        // Http request..
+    });
 
     const assignedClasses = [];
     let btnClass = '';
