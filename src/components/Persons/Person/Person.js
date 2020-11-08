@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 
-import Auxiliary from '../../../hoc/Auxiliary';
+// import Auxiliary from '../../../hoc/Auxiliary';
 // import styled from 'styled-components';
 import classes from './Person.css'
 
@@ -27,8 +27,10 @@ class Person extends Component {
         console.log('[Person.js] rendering...');
 
         return (
-            // Return one expression and by using that we can return multiple elements instead a div that inside it has children elemnts
-            <Auxiliary>
+            // Auxiliary(aux) - Return one expression and by using that we can return multiple elements instead a div that inside it has children elemnts
+
+            //Fragment does the sime as the const aux we created wraping all and allow us to return multiple elements
+            <Fragment>
             {/* // <div className="person" style={style}> */}
             {/* <div className={classes.Person}> */}
                 {/* 
@@ -55,7 +57,7 @@ class Person extends Component {
                 <input type="text" onChange={this.props.changed} value={this.props.name}></input>
             {/* </div>     */}
             {/* // </div> */}
-            </Auxiliary>
+            </Fragment>
         );
 
     }
