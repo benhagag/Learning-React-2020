@@ -1,12 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import classes from './Cockpit.css';
 
 const cockpit = props => {
 
+    const toggleBtnRef = useRef(null);
+
     /*
       * useEffect() - Passing a function to useEffect() and this wil excute for every render cycle
-      * It is componentDidMount and componentDidUpdate combined in one effect
+      * It is componentDidMount and componentDidUpdate combined in one effect - which means after it renders
       * For ccontrolling useEffect and excute it by specifiec render we will pass to it a second argument array
       * In That second argument array we will put the data we want to excute the useEffect
     */
@@ -22,9 +24,15 @@ const cockpit = props => {
     useEffect(()=>{
         console.log('[Cockpit.js] useEffect on first time render');
         // Http request..
-        setTimeout(()=>{
-            alert('Saved data to cloud!');
-        },1000);
+        // setTimeout(()=>{
+        //     alert('Saved data to cloud!');
+        // },1000);
+
+        /*
+        * Use Ref Hook - useRef()
+        */
+        toggleBtnRef.current.click();
+
         /*
         * anonimos function for cleanupwork
         * we can compare it to - componentWillUnmount() - Using that hook before the Component is removed from the virtual DOM. 
@@ -71,6 +79,7 @@ const cockpit = props => {
             // React throw a Warning for writing FALSE in the DOM so instead I'm using undefined.
             className={btnClass}
             onClick={props.clicked}
+            ref={toggleBtnRef}
             >
             Toggle Persons
             </button>
