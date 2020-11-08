@@ -41,7 +41,18 @@ class Persons extends Component {
     */
     shouldComponentUpdate(nextProps, nextState){
         console.log('[Persons.js] shouldComponentUpdate');
-        return true;
+
+        /*
+         * Optimize for preventing rendering Persons component when there is no need for that
+         * So now it Person component will be rendered only if Persons is changed.
+         */
+
+        if(nextProps.persons !== this.props.persons){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
 
     /*
