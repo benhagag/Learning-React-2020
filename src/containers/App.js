@@ -11,12 +11,13 @@ import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 import Animal from '../components/Animal/Animal';
-import WithClass from '../hoc/WithClass';
+// withClass is a function that return a functional component that is why we don't need to use uppercase
+import withClass from '../hoc/withClass';
+import Auxiliary from '../hoc/Auxiliary';
 
 
 import Assigment1 from '../components/Assigment1/Assigment1';
 import Assigment2 from '../components/Assigment2/Assigment2';
-import withClass from '../hoc/WithClass';
 
 
 class App extends Component {
@@ -210,7 +211,8 @@ class App extends Component {
       // StyleRoot - For apply Radium in all conponents that is renderd in App.js
       // <StyleRoot>
         // <div className={classes.App}>
-        <WithClass classes={classes.App}>
+        // <WithClass classes={classes.App}>
+        <Auxiliary>
           <button 
             onClick={() => {this.setState({showCokpit: !this.state.showCokpit});}}
           >
@@ -234,7 +236,8 @@ class App extends Component {
           < Assigment1 />
           <hr /><br />
           < Assigment2 />
-          </WithClass>
+          </Auxiliary>
+          // </WithClass>
         /* </div> */
       // </StyleRoot>
     );
@@ -268,4 +271,5 @@ class App extends Component {
 }
 
 // export default Radium(App);
-export default App;
+// withclass(WrappedComponent, className) we pass to withclass function the App component and the classes names
+export default withClass(App, classes.App);
