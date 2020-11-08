@@ -63,6 +63,31 @@ class App extends Component {
   }
 
   /*
+    * shouldComponentUpdate()  - allow us to cancel the updating process
+    * decide whethe or not React should continue evaluating and re-rendering the component
+    * Don't cause side-Effects!
+    * return TRUE/FALSE
+    * Update LifeCycle Hook
+  */
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+
+  /*
+    * componentDidUpdate() - after the render method has been excuted
+    * DO: Cause side-effects
+    * DON't: Udate State (Because it triggers re-render)
+    * Update LifeCycle Hook
+    * componentDidUpdate()- Get data from getSnapshotBeforeUpdate()
+  */
+  componentDidUpdate(prevProps, prevState){
+    console.log('[App.js] componentDidUpdate');
+    // console.log(snapshot);
+  }
+
+  /*
     UNSAFE_componentWillMount() is invoked just before mounting occurs.
     It is called before render(), therefore calling setState() synchronously in this method will not trigger an extra rendering.
     Generally, we recommend using the constructor() instead for initializing state.
@@ -76,29 +101,11 @@ class App extends Component {
   // }
 
   /*
-  * shouldComponentUpdate()  - allow us to cancel the updating process
-  * decide whethe or not React should continue evaluating and re-rendering the component
-  * Don't cause side-Effects!
-  */
-  // shouldComponentUpdate(nextProps, nextState){
-
-  // }
-
-  /*
   * getSnapshotBeforeUpdate() - Changing the DOM in the last minute
   * DO: Last-minute DOM ops
   * Don't: Cause side-effects 
   */
   // getSnapshotBeforeUpdate(prevProps, prevState){
-
-  // }
-
-  /*
-  * componentDidUpdate() - after the render method has benn excuted
-  * DO: Cause side-effects
-  * DON't: Udate State (Because it triggers re-render)
-  */
-  // componentDidUpdate(){
 
   // }
 
