@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 import Auxiliary from '../../../hoc/Auxiliary';
 import withClass from '../../../hoc/withClass';
@@ -63,6 +64,14 @@ class Person extends Component {
 
     }
 
+};
+
+// defining  the props and their type in case fro example we want to share our project with other developers.
+Person.propTypes = {
+    click: PropTypes.func, // data type pointer for a function
+    name: PropTypes.string, // data type string
+    age: PropTypes.number, // data type number
+    changed: PropTypes.func // data type pointer for a function
 };
 
 export default withClass(Person, classes.Person);
