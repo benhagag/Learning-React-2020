@@ -7,11 +7,26 @@ const cockpit = (props) => {
     /*
       * useEffect() - Passing a function to useEffect() and this wil excute for every render cycle
       * It is componentDidMount and componentDidUpdate combined in one effect
+      * For ccontrolling useEffect and excute it by specifiec render we will pass to it a second argument array
+      * In That second argument array we will put the data we want to excute the useEffect
     */
+    // useEffect(()=>{
+    //     console.log('[Cockpit.js] useEffect on changing persons');
+    //     // Http request..
+    //     setTimeout(()=>{
+    //         alert('Saved data to cloud!');
+    //     },1000);
+    // //  [props.persons] - In case props.persons has been change we will excute useEffect()
+    // }, [props.persons]);
+
     useEffect(()=>{
-        console.log('[Cockpit.js] useEffect');
+        console.log('[Cockpit.js] useEffect on first time render');
         // Http request..
-    });
+        setTimeout(()=>{
+            alert('Saved data to cloud!');
+        },1000);
+    //  [] - In case empty array (no dependecies) it will excute while the component will be rendered in the first time only AND will never excute again
+    }, []);
 
     const assignedClasses = [];
     let btnClass = '';
