@@ -33,11 +33,21 @@ class Person extends Component {
         this.inputElementRef = React.createRef();
     }
 
+    /**
+     * Another way to use AuthContext instead of AuthContext.Consume
+     * static contextType - allow React to connect this class to the context behind the scene
+     * which give us new propery in this class - this.context
+     */
+    static contextType = AuthContext;
+
     componentDidMount(){
         // this.inputElement.focus();
 
         //Using current.focus with React.createRef() 
         this.inputElementRef.current.focus();
+
+        // Provided by static contextType
+        console.log(this.context.authenticated);
     }
 
     render(){
@@ -50,6 +60,8 @@ class Person extends Component {
             <Auxiliary>
             {/* // <div className="person" style={style}> */}
             {/* <div className={classes.Person}> */}
+
+                {/*
                 <AuthContext.Consumer>
                     {
                         context => 
@@ -61,7 +73,20 @@ class Person extends Component {
                         
                     }
                   
-                </AuthContext.Consumer>
+                </AuthContext.Consumer> 
+                */}
+                
+                {
+                 
+                        this.context.authenticated
+                        ?
+                        <p> Authenticated!</p>
+                        : 
+                        <p>Please log in</p>
+                    
+                }
+
+
                 
             
                 {/* 
