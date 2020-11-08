@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 
 import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context';
 
 const cockpit = props => {
 
@@ -83,7 +84,13 @@ const cockpit = props => {
             >
             Toggle Persons
             </button>
-            <button onClick={props.login}>Log in</button>
+            {/* AuthContext.Consumer -  Wraaping a function wehre we get the context argument
+                And then this function returns the JSX code  
+            */}
+            <AuthContext.Consumer>
+                {context => <button onClick={context.login}>Log in</button>}
+            </AuthContext.Consumer>
+            
         </div>
     );
 

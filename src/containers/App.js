@@ -14,6 +14,11 @@ import Animal from '../components/Animal/Animal';
 // withClass is a function that return a functional component that is why we don't need to use uppercase
 import withClass from '../hoc/withClass';
 import Auxiliary from '../hoc/Auxiliary';
+/*
+ * AuthContext can be use as a component
+ * And it should wrap all the parts of the application that need access to this context  
+*/
+import AuthContext from '../context/auth-context';
 
 
 import Assigment1 from '../components/Assigment1/Assigment1';
@@ -237,18 +242,26 @@ class App extends Component {
           >
             Remove Cockpit
           </button>
+          {/*
+            * Context.Provider - Very useful if we have very long chains of data
+            * Context.Consumer - takes a fucntion that gets access to the context object between opening and closing tag and return my JSX code
+           */}
+          <AuthContext.Provider value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler
+          }}>
           {this.state.showCokpit ? 
             <Cockpit
               title={this.props.appTitle}
               showPersons={this.state.showPersons}
               personsLength={this.state.persons.length}
               clicked={this.togglePersonsHandler}
-              login={this.loginHandler}
             />
             :
             null
           }
           {persons}
+          </AuthContext.Provider>
           <br />
           <br />
           <Animal />

@@ -118,8 +118,7 @@ class Persons extends PureComponent {
     render(){
 
         console.log('[Persons.js] rendering...');
-
-        {/*.map() - will excute a method for each element in the array*/}
+        // {/*.map() - will excute a method for each element in the array*/}
         return this.props.persons.map((person, index) => {
             // React allow us to return an array of adjcent elements al long the have a key
             return (
@@ -147,7 +146,6 @@ class Persons extends PureComponent {
     
                     */
                     changed={(event) => this.props.changed(event,person.id)}
-                    isAuth={this.props.isAuthenticated}
                 />
             );
         });

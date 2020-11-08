@@ -5,6 +5,7 @@ import Auxiliary from '../../../hoc/Auxiliary';
 import withClass from '../../../hoc/withClass';
 // import styled from 'styled-components';
 import classes from './Person.css'
+import AuthContext from '../../../context/auth-context';
 
 
 // Style Component(StyleDiv) - we will use it as component - because it returns a React Component
@@ -47,15 +48,22 @@ class Person extends Component {
 
             //Fragment does the sime as the const aux we created wraping all and allow us to return multiple elements
             <Auxiliary>
-                {
-                this.props.isAuth
-                ?
-                <p> Authenticated!</p>
-                : 
-                <p>Please log in</p>
-                }
             {/* // <div className="person" style={style}> */}
             {/* <div className={classes.Person}> */}
+                <AuthContext.Consumer>
+                    {
+                        context => 
+                            context.authenticated
+                            ?
+                            <p> Authenticated!</p>
+                            : 
+                            <p>Please log in</p>
+                        
+                    }
+                  
+                </AuthContext.Consumer>
+                
+            
                 {/* 
                     props - All the properties we use on the HTML JSX element.
                     On Class component we will use props with this -> {this.props.name}
@@ -76,15 +84,15 @@ class Person extends Component {
                     props.name - value the name as it passed from App component.
                     Two way binding - form App to person pass  avalue AND from person to App return a value onChange.
     
-                 */}
+                */}
                 <input
                     type="text"
                     /*
-                     * Special property we can use in all elements
-                     * Adding new property to the class by using this.NamdOfVariable
-                     * After using it as a global property we can use it anywhere in our application
-                     * Using this in Class component only
-                     * Older approach
+                    * Special property we can use in all elements
+                    * Adding new property to the class by using this.NamdOfVariable
+                    * After using it as a global property we can use it anywhere in our application
+                    * Using this in Class component only
+                    * Older approach
                     */
                     // ref={(inputEl)=>{this.inputElement = inputEl}}
                     /*
@@ -95,6 +103,7 @@ class Person extends Component {
                     onChange={this.props.changed}
                     value={this.props.name}
                 />
+                
             {/* </div>     */}
             {/* // </div> */}
             </Auxiliary>
