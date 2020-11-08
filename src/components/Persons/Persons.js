@@ -1,8 +1,11 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import Person from './Person/Person';
 
-class Persons extends Component {
+/*
+ * PureComponent is a normal component that already implements shouldComponentUpdate() with a complete props check
+*/
+class Persons extends PureComponent {
 
     state = {
         something:"something"
@@ -39,24 +42,30 @@ class Persons extends Component {
     * return TRUE/FALSE
     * Update LifeCycle Hook
     */
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('[Persons.js] shouldComponentUpdate');
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log('[Persons.js] shouldComponentUpdate');
 
-        /*
-         * Optimize for preventing rendering Persons component when there is no need for that
-         * So now it Person component will be rendered only if Persons is changed
-         * 
-         * Array and Objects are reference types
-         * We compare here the potiner between (nextProps.persons !== this.props.persons)
-         * 
-         */
-        if(nextProps.persons !== this.props.persons){
-            return true;
-        }else{
-            return false;
-        }
+    //     /*
+    //      * Optimize for preventing rendering Persons component when there is no need for that
+    //      * So now it Person component will be rendered only if Persons is changed
+    //      * 
+    //      * Array and Objects are reference types
+    //      * We compare here the potiner between (nextProps.persons !== this.props.persons)
+    //      * 
+    //      * If we compare ALL the props we get  - Then there is an easier way to do it with PureComponent
+    //      */
+    //     if( nextProps.persons !== this.props.persons 
+    //         || 
+    //         nextProps.changed !== this.props.changed
+    //         ||
+    //         nextProps.clicked !== this.props.clicked
+    //     ){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
         
-    }
+    // }
 
     /*
     * getSnapshotBeforeUpdate() - Changing the DOM in the last minute
