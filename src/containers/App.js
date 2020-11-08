@@ -11,10 +11,12 @@ import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Persons from '../components/Persons/Persons';
 import Animal from '../components/Animal/Animal';
+import WithClass from '../hoc/WithClass';
 
 
 import Assigment1 from '../components/Assigment1/Assigment1';
 import Assigment2 from '../components/Assigment2/Assigment2';
+import withClass from '../hoc/WithClass';
 
 
 class App extends Component {
@@ -207,7 +209,8 @@ class App extends Component {
     return (
       // StyleRoot - For apply Radium in all conponents that is renderd in App.js
       // <StyleRoot>
-        <div className={classes.App}>
+        // <div className={classes.App}>
+        <WithClass classes={classes.App}>
           <button 
             onClick={() => {this.setState({showCokpit: !this.state.showCokpit});}}
           >
@@ -231,7 +234,8 @@ class App extends Component {
           < Assigment1 />
           <hr /><br />
           < Assigment2 />
-        </div>
+          </WithClass>
+        /* </div> */
       // </StyleRoot>
     );
 
