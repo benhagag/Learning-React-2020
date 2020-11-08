@@ -22,7 +22,7 @@ const cockpit = (props) => {
     useEffect(()=>{
         console.log('[Cockpit.js] useEffect on first time render');
         // Http request..
-        setTimeout(()=>{
+        const timer = setTimeout(()=>{
             alert('Saved data to cloud!');
         },1000);
         /*
@@ -30,9 +30,11 @@ const cockpit = (props) => {
         * we can compare it to - componentWillUnmount() - Using that hook before the Component is removed from the virtual DOM. 
         */
         return () => {
+            //clearTimeout() - Will prevent the setTimeout() to excute
+            clearTimeout(timer);
             console.log('[Cockpit.js] cleanup work in useEffect');
         };  
-    //  [] - In case empty array (no dependecies) it will excute while the component will be rendered in the first time only AND will never excute again
+    //  [] - In case empty array (no dependecies) it will excute while the component will be mounted and rendered in the first time only AND will never excute again
     }, []);
 
     useEffect(()=>{
