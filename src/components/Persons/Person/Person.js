@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+
+import Auxiliary from '../../../hoc/Auxiliary';
 // import styled from 'styled-components';
 import classes from './Person.css'
 
@@ -25,8 +27,10 @@ class Person extends Component {
         console.log('[Person.js] rendering...');
 
         return (
-            // <div className="person" style={style}>
-            <div className={classes.Person}>
+            // Return one expression and by using that we can return multiple elements instead a div that inside it has children elemnts
+            <Auxiliary>
+            {/* // <div className="person" style={style}> */}
+            {/* <div className={classes.Person}> */}
                 {/* 
                     props - All the properties we use on the HTML JSX element.
                     On Class component we will use props with this -> {this.props.name}
@@ -49,8 +53,9 @@ class Person extends Component {
     
                  */}
                 <input type="text" onChange={this.props.changed} value={this.props.name}></input>
-            </div>    
-            // </div>
+            {/* </div>     */}
+            {/* // </div> */}
+            </Auxiliary>
         );
 
     }

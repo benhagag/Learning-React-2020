@@ -121,6 +121,7 @@ class Persons extends PureComponent {
 
         {/*.map() - will excute a method for each element in the array*/}
         return this.props.persons.map((person, index) => {
+            // React allow us to return an array of adjcent elements al long the have a key
             return (
                 <Person
                     // Adding properties to the Person component
