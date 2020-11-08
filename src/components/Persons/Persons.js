@@ -80,6 +80,16 @@ class Persons extends Component {
         console.log(snapshot);
     }
 
+    /*
+     * componentWillUnmount() - Using that hook before the Component is removed from the virtual DOM.
+     * 
+     * 
+     * 
+    */
+    componentWillUnmount(){
+        console.log('[Persons.js] componentWillUnmount');
+    }
+
     render(){
 
         console.log('[Persons.js] rendering...');

@@ -25,8 +25,29 @@ const cockpit = (props) => {
         setTimeout(()=>{
             alert('Saved data to cloud!');
         },1000);
+        /*
+        * anonimos function for cleanupwork
+        * we can compare it to - componentWillUnmount() - Using that hook before the Component is removed from the virtual DOM. 
+        */
+        return () => {
+            console.log('[Cockpit.js] cleanup work in useEffect');
+        };  
     //  [] - In case empty array (no dependecies) it will excute while the component will be rendered in the first time only AND will never excute again
     }, []);
+
+    useEffect(()=>{
+        console.log('[Cockpit.js] 2nd useEffect');
+        /*
+        * anonimos function for cleanupwork
+        * we can compare it to - componentWillUnmount() - Using that hook before the Component is removed from the virtual DOM. 
+        */
+        return () => {
+            console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+        };  
+    // no dependecies - it will excute each time the component render and re-render
+    });
+
+
 
     const assignedClasses = [];
     let btnClass = '';

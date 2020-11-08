@@ -41,6 +41,7 @@ class App extends Component {
     ],
     showPersons: false,
     otherState: 'Some other data',
+    showCokpit: true
   }
 
   /*
@@ -207,12 +208,21 @@ class App extends Component {
       // StyleRoot - For apply Radium in all conponents that is renderd in App.js
       // <StyleRoot>
         <div className={classes.App}>
-          <Cockpit
+          <button 
+            onClick={() => {this.setState({showCokpit: !this.state.showCokpit});}}
+          >
+            Remove Cockpit
+          </button>
+          {this.state.showCokpit ? 
+            <Cockpit
             title={this.props.appTitle}
             showPersons={this.state.showPersons}
             persons={this.state.persons}
             clicked={this.togglePersonsHandler}
-          />
+            />
+            :
+            null
+          }
           {persons}
           <br />
           <br />
