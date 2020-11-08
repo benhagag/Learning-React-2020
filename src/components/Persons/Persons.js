@@ -4,6 +4,8 @@ import Person from './Person/Person';
 
 /*
  * PureComponent is a normal component that already implements shouldComponentUpdate() with a complete props check
+ * So that checks for any changes in any prop of that component
+ * It is good for saving code and not needing to copare manually each prop
 */
 class Persons extends PureComponent {
 
