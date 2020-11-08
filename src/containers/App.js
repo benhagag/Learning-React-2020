@@ -44,7 +44,8 @@ class App extends Component {
     ],
     showPersons: false,
     otherState: 'Some other data',
-    showCokpit: true
+    showCokpit: true,
+    changeCounter: 0
   }
 
   /*
@@ -178,8 +179,16 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({
-      persons: persons
+    /*
+     * In this way of using in this.setState we using prevState to update the state and not this.state it self
+     * If we want to use something from this.state while usestate() this is the right way to do it - with prevState  
+     * Super Important to remebr!
+     */
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: this.prevState.changeCounter + 1
+      };
     });
   }
 
