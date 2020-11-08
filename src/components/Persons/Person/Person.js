@@ -25,6 +25,20 @@ import classes from './Person.css'
 
 class Person extends Component {
 
+    constructor(props){
+        // always when we add a costructor add super first!
+        super(props);
+        // Getting any refernces object React gives me
+        this.inputElementRef = React.createRef();
+    }
+
+    componentDidMount(){
+        // this.inputElement.focus();
+
+        //Using current.focus with React.createRef() 
+        this.inputElementRef.current.focus();
+    }
+
     render(){
         console.log('[Person.js] rendering...');
 
@@ -56,7 +70,24 @@ class Person extends Component {
                     Two way binding - form App to person pass  avalue AND from person to App return a value onChange.
     
                  */}
-                <input type="text" onChange={this.props.changed} value={this.props.name}></input>
+                <input
+                    type="text"
+                    /*
+                     * Special property we can use in all elements
+                     * Adding new property to the class by using this.NamdOfVariable
+                     * After using it as a global property we can use it anywhere in our application
+                     * Using this in Class component only
+                     * Older approach
+                    */
+                    // ref={(inputEl)=>{this.inputElement = inputEl}}
+                    /*
+                    * inputElementRef - holds the React.createRef()
+                    * Newer approach
+                    */
+                    ref={this.inputElementRef}
+                    onChange={this.props.changed}
+                    value={this.props.name}
+                />
             {/* </div>     */}
             {/* // </div> */}
             </Auxiliary>
@@ -66,7 +97,7 @@ class Person extends Component {
 
 };
 
-// defining  the props and their type in case fro example we want to share our project with other developers.
+// defining  the props and their type in case fro example we want to share our project with other developers
 Person.propTypes = {
     click: PropTypes.func, // data type pointer for a function
     name: PropTypes.string, // data type string
