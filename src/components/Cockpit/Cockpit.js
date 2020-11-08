@@ -82,5 +82,7 @@ const cockpit = props => {
 /*
  * React.memo() - store a snapshot of this component and only if its input changes, it will re-render it
  * And otherwise if its inputs do not change and some parent component want to update this component, React will give back that stored component
+ * Great way of getting optimization for the functional components
+ * We should wrap functional component that might not need update with every chnage in the parent component with React.memo ()
 */
 export default React.memo(cockpit);
